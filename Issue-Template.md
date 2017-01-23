@@ -1,10 +1,10 @@
 # Goal
 
-__As a__  <!---DEV OR CUSTOMER -->
+__As a__  //DEV OR CUSTOMER -->
 
-__In order to__ <!-- Do the Thing -->
+__In order to__ // Do the Thing -->
 
-__I want to__ <!--Accomplish the thing -->
+__I want to__ //Accomplish the thing -->
 
 # Problem
 
