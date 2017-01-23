@@ -1,6 +1,6 @@
 # Goal
 
-__As a__ <role> <!---DEV OR CUSTOMER -->
+__As a__  <!---DEV OR CUSTOMER -->
 
 __In order to__ <!-- Do the Thing -->
 
