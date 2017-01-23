@@ -1,4 +1,5 @@
-Fixes issue # .
+##Fixes issue
+-
 
 ###Changes proposed this pull request
 
