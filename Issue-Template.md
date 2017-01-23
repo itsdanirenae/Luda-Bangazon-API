@@ -1,12 +1,12 @@
-# Story
+# Goal
 
-__As a__ 
+__As a__ <role> <!---DEV OR CUSTOMER -->
 
-__In order to__
+__In order to__ <!-- Do the Thing -->
 
-__I want to__ 
+__I want to__ <!--Accomplish the thing -->
 
-# Scenarios
+# Problem
 
 __Given__
 
