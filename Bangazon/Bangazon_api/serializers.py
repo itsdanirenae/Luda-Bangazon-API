@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from bangazon.models import *
+from Bangazon_api.models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
