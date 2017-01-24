@@ -6,12 +6,12 @@ class UserList(generics.ListCreateAPIView):
     """
     List all users, or create a new user.
     """
-    queryset = Bangazon_api.objects.all()
+    queryset = Users.objects.all()
     serializer_class = UserSerializer
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a user instance.
     """
-    queryset = Bangazon_api.objects.all()
+    queryset = Users.objects.all()
     serializer_class = UserSerializer
