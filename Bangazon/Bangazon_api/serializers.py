@@ -10,3 +10,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'title', 'description', 'price', 'product_category_id', 'user_id',)
+
+class PaymentMethod(serializers.ModelSerializer):
+	class Meta:
+		model = PaymentMethod
+		fields = ('id','name', 'account-number', 'user_id',)
