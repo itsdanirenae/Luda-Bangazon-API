@@ -43,3 +43,12 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'active', 'payment_method_id', 'user_id',)
+
+        
+class PaymentMethodSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: Payment Method
+    """
+	class Meta:
+		model = PaymentMethod
+		fields = ('id','name', 'account-number', 'user_id',)
