@@ -7,7 +7,7 @@ class ProductCategoryList(generics.ListCreateAPIView):
 	    """
 	    List all Product Categories, or create a new user.
 	    """
-    queryset = Bangazon_api.objects.all()
+    queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
 
 
@@ -15,5 +15,5 @@ class ProductCategoryDetail(generics.RetrieveUpdateDestroyAPIView):
 	"""
 	List all products with the selected Product Category
 	"""
-    queryset = Bangazon_api.objects.all()
+    queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
