@@ -2,15 +2,15 @@ from Bangazon_api.models import *
 from Bangazon_api.serializer import *
 from rest_framework import generics
 
-class PaymentList(generics.ListCreateAPIView):
+class PaymentMethodList(generics.ListCreateAPIView):
     """ List Product or create a new user
     """
-    queryset = Payment.objects.all()
+    queryset = PaymentMethod.objects.all()
     serializer_class = PaymentMethodSerializer
 
-class PaymentDetail(gnerics.RetreiveUpdateDestoryAPIView):
+class PaymentMethodDetail(gnerics.RetreiveUpdateDestoryAPIView):
     """ List selected product detail
     """
 
-    queryset = Payment.objects.all()
+    queryset = PaymentMethod.objects.all()
     serializer_class = PaymentMethodSerializer
