@@ -19,6 +19,9 @@ class ProductOrderSerializer(serializers.ModelSerializer):
   
 
 class OrderSerializer(serializers.ModelSerializer):
+    """
+    class to serialize order
+    """
     class Meta:
         model = Order
         fields = ('id', 'active', 'payment_method_id', 'user_id',)
