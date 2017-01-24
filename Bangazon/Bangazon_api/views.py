@@ -5,10 +5,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-# Create your views here.
 class UserList(APIView):
     """
-    List all snippets, or create a new snippet.
+    List all users, or create a new user.
     """
     def get(self, request, format=None):
         user = Users.objects.all()
