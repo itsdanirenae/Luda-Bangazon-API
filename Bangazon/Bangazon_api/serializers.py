@@ -11,6 +11,20 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ('id', 'title', 'description', 'price', 'product_category_id', 'user_id',)
 
+class ProductOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductOrder
+        fields = ('id', 'product_id', 'order_id',)      
+  
+
+class OrderSerializer(serializers.ModelSerializer):
+    """
+    class to serialize order
+    """
+    class Meta:
+        model = Order
+        fields = ('id', 'active', 'payment_method_id', 'user_id',)
+        
 class PaymentMethod(serializers.ModelSerializer):
 	class Meta:
 		model = PaymentMethod
