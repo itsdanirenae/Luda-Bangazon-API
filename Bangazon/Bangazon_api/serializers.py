@@ -25,3 +25,12 @@ class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
         fields = ('id', 'name',)
+
+
+class ProductOrderSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: ProductOrder
+    """
+	class Meta:
+		model = ProductOrder
+		fields = ('id', 'product_id', 'order_id',)      
