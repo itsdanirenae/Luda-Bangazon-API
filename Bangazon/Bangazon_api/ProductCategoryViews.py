@@ -4,10 +4,10 @@ from rest_framework import generics
 
 
 class ProductCategoryList(generics.ListCreateAPIView):
-	    """
-	    List all Product Categories, or create a new user.
-	    """
-    queryset = ProductCategory.objects.all()
+    """
+    List all Product Categories
+    """
+    queryset = Bangazon_api.objects.all()
     serializer_class = ProductCategorySerializer
 
 
