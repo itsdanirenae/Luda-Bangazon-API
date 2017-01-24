@@ -31,6 +31,15 @@ class ProductOrderSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: ProductOrder
     """
-	class Meta:
-		model = ProductOrder
-		fields = ('id', 'product_id', 'order_id',)      
+    class Meta:
+        model = ProductOrder
+        fields = ('id', 'product_id', 'order_id',)      
+  
+
+class OrderSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: Order
+    """
+    class Meta:
+        model = Order
+        fields = ('id', 'active', 'payment_method_id', 'user_id',)
