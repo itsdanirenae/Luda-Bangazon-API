@@ -6,7 +6,7 @@ class OrderList(generics.ListCreateAPIView):
     """
     List all Orders, or create a new Order.
     """
-    queryset = Bangazon_api.objects.all()
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
 
@@ -14,5 +14,5 @@ class OrderDetails(generics.RetreiveUpdateDestroyAPIView):
     """
     List Order details.
     """
-    queryset = Bangazon_api.objects.all()
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
