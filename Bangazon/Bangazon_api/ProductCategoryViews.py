@@ -7,7 +7,7 @@ class ProductCategoryList(generics.ListCreateAPIView):
     """
     List all Product Categories
     """
-    queryset = Bangazon_api.objects.all()
+    queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
 
 
