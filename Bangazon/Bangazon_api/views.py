@@ -11,7 +11,7 @@ class OrderList(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
 
 
-class OrderDetails(generics.RetrieveUpdateDestroyAPIView):
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     List Order details.
     """
@@ -53,7 +53,7 @@ class ProductOrderList(generics.ListCreateAPIView):
     queryset = ProductOrder.objects.all()
     serializer_class = ProductOrderSerializer
 
-class ProductOrderDetails(generics.RetrieveUpdateDestroyAPIView):
+class ProductOrderDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     List all product orders, or create a new order
     """
