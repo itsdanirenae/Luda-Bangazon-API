@@ -1,5 +1,5 @@
 from Bangazon_api.models import *
-from Bangazon_api.serializer import *
+from Bangazon_api.serializers import *
 from rest_framework import generics
 
 class ProductList(generics.ListCreateAPIView):
