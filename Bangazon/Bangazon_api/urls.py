@@ -3,6 +3,7 @@ from . import views
 from .views import *
 
 urlpatterns = [
+	# url(r'^', APIRootView.as_view()),
     url(r'^users/$', UserList.as_view()),
     url(r'^users/(?P<pk>[0-9]+)/$', UserDetail.as_view()),
     url(r'^payment-methods/$', PaymentMethodList.as_view()),
