@@ -1,6 +1,10 @@
 from django.conf.urls import url, include
 from . import views
 from .views import *
+"""  
+    url configuration for the bangazon_api application
+"""
+
 
 urlpatterns = [
     url(r'^users/$', UserList.as_view()),
