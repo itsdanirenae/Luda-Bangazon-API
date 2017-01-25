@@ -49,6 +49,6 @@ class PaymentMethodSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: Payment Method
     """
-	class Meta:
-		model = PaymentMethod
-		fields = ('id','name', 'account_number', 'user_id',)
+    class Meta:
+        model = PaymentMethod
+        fields = ('id','name', 'account_number', 'user_id',)

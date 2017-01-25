@@ -2,6 +2,7 @@ from Bangazon_api.models import *
 from Bangazon_api.serializers import *
 from rest_framework import generics
 
+
 class OrderList(generics.ListCreateAPIView):
     """
     List all Orders, or create a new Order.
