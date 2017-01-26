@@ -20,13 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        user = self.get_object()
-        return Response(user.highlighted)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+  
 
 class OrderViewSet(viewsets.ModelViewSet):
     """
@@ -38,13 +32,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        order = self.get_object()
-        return Response(order.highlighted)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+   
 
 class PaymentMethodViewSet(viewsets.ModelViewSet):
     """
@@ -55,14 +43,6 @@ class PaymentMethodViewSet(viewsets.ModelViewSet):
     """
     queryset = PaymentMethod.objects.all()
     serializer_class = PaymentMethodSerializer
-
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        paymentMethod = self.get_object()
-        return Response(paymentMethod.highlighted)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
@@ -75,13 +55,7 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
     queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
 
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        prodCat = self.get_object()
-        return Response(prodCat.highlighted)
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
 class ProductOrderViewSet(viewsets.ModelViewSet):
     """
@@ -93,13 +67,7 @@ class ProductOrderViewSet(viewsets.ModelViewSet):
     queryset = ProductOrder.objects.all()
     serializer_class = ProductOrderSerializer
 
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        prodOrder = self.get_object()
-        return Response(prodOrder.highlighted)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+  
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
@@ -113,13 +81,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     # serializer = ProductSerializer(queryset, context={'request': request})
 
 
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        product = self.get_object()
-        return Response(product.highlighted)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
 
 # @api_view(['GET'])
