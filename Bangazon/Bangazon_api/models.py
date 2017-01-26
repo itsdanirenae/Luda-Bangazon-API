@@ -9,6 +9,10 @@ class User(models.Model):
     last_name = models.CharField(max_length=50, default='')
     date_of_birth = models.DateField(default=True)
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
+
     class Meta:
         ordering = ('last_name',)
 
@@ -23,6 +27,10 @@ class PaymentMethod(models.Model):
     account_number = models.CharField(max_length=100, blank=True, default='')
     user_id = models.ForeignKey("User", on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
+
     class Meta:
         ordering = ('name',)
 
@@ -36,6 +44,10 @@ class Order(models.Model):
     payment_method_id = models.ForeignKey("PaymentMethod", on_delete=models.CASCADE)
     user_id = models.ForeignKey("User", on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.id
+
+
     class Meta:
         ordering = ('user_id',)
 
@@ -46,6 +58,12 @@ class ProductCategory(models.Model):
     Class to represent a category of products on Bangazon
     """      
     name = models.CharField(max_length=50, default='')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
 
 
 
@@ -61,6 +79,9 @@ class Product(models.Model):
     product_category_id = models.ForeignKey("ProductCategory", on_delete=models.CASCADE)
     user_id = models.ForeignKey("User", on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         ordering = ('name',)
 
@@ -74,4 +95,4 @@ class ProductOrder(models.Model):
     order_id = models.ForeignKey("Order", on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('order_id',)  
+        ordering = ('order_id',)
