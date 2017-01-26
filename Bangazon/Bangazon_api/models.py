@@ -12,7 +12,6 @@ class User(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-
     class Meta:
         ordering = ('last_name',)
 
@@ -30,7 +29,6 @@ class PaymentMethod(models.Model):
     def __str__(self):
         return self.name
 
-
     class Meta:
         ordering = ('name',)
 
@@ -46,7 +44,6 @@ class Order(models.Model):
 
     def __str__(self):
         return self.id
-
 
     class Meta:
         ordering = ('user_id',)

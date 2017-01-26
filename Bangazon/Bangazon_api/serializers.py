@@ -13,6 +13,14 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Product
     """
+    # product_category_id = serializers.HyperlinkedIdentityField(view_name='Bangazon:ProductCategoryViewSet-detail')
+
+    # user_id = serializers.HyperlinkedRelatedField(
+    #     many=True,
+    #     read_only=True,
+    #     view_name='User-detail'
+    # )
+
     class Meta:
         model = Product
         fields = ('id', 'name', 'description', 'price', 'quantity_available', 'product_category_id', 'user_id',)
