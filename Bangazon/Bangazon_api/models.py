@@ -43,7 +43,7 @@ class Order(models.Model):
     user_id = models.ForeignKey("User", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     class Meta:
         ordering = ('user_id',)
