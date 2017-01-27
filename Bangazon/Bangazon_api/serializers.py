@@ -7,16 +7,31 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     Class for data serialization of a specific Model: User
     Sets user serializer to only show sensitive imformation to superusers
     """
-    date_of_birth = serializers.SerializerMethodField()
 
-    def  get_date_of_birth(self, obj ):
+    def to_representation(self, obj):
+        """
+        A Method to filter fields based on user permissions
+
+        Arguments:
+        self
+        obj
+        """
+        # get the original representation
+        ret = super(UserProfileSerializer, self).to_representation(obj)
+
+        # remove 'url' field if mobile request
         if self.context['request'].user.is_staff:
-            return obj.date_of_birth
-            # obj = {'date_of_birth': {'write_only': True}}
-    
+            return ret
+        else:
+            ret.pop('date_of_birth')
+            ret.pop('created')
+            return ret
+
     class Meta:
         model = UserProfile
-        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth',)
+        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth', 'created')
+
+
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Product
