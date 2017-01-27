@@ -1,15 +1,22 @@
 from rest_framework import serializers
 from Bangazon_api.models import *
+from django.contrib.auth import models
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: User
+    Sets user serializer to only show sensitive imformation to superusers
     """
+    date_of_birth = serializers.SerializerMethodField()
+
+    def  get_date_of_birth(self, obj ):
+        if self.context['request'].user.is_staff:
+            return obj.date_of_birth
+            # obj = {'date_of_birth': {'write_only': True}}
     
     class Meta:
-        model = User
+        model = UserProfile
         fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth',)
-
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Product
@@ -50,7 +57,9 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Payment Method
+    Sets user serializer to only show sensitive imformation to superusers
     """
     class Meta:
         model = PaymentMethod
         fields = ('id', 'url', 'name', 'account_number', 'user_id',)
+        # extra_kwargs = {'account_number': {'write_only': True}}

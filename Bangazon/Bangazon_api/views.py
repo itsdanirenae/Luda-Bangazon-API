@@ -7,17 +7,19 @@ from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 from rest_framework import viewsets
 from rest_framework import renderers 
+from rest_framework import permissions
 
 
-
-class UserViewSet(viewsets.ModelViewSet):
+class UserProfileViewSet(viewsets.ModelViewSet):
     """
     The User View provides the `list`, `create`, and `retrieve` actions.
     Please click on a specific User's url for the `update` and `destroy` actions.
     """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+    
   
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -66,3 +68,5 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
