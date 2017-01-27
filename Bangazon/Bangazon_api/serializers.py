@@ -77,4 +77,3 @@ class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PaymentMethod
         fields = ('id', 'url', 'name', 'account_number', 'user_id',)
-        # extra_kwargs = {'account_number': {'write_only': True}}
