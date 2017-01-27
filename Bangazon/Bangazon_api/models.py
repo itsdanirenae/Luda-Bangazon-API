@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class UserProfile(models.Model):
     """
     Class to create a table representing a User(customer) of Bangazon API
     Extension of models.Model
@@ -54,7 +54,7 @@ class PaymentMethod(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=50, default='')
     account_number = models.CharField(max_length=100, blank=True, default='')
-    user_id = models.ForeignKey("User", on_delete=models.CASCADE)
+    user_id = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
 
     def __str__(self):
         """
@@ -96,7 +96,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     payment_method_id = models.ForeignKey("PaymentMethod",
         on_delete=models.CASCADE)
-    user_id = models.ForeignKey("User", on_delete=models.CASCADE)
+    user_id = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
 
     def __str__(self):
         """
@@ -167,7 +167,7 @@ class Product(models.Model):
     quantity_available = models.IntegerField()
     description = models.TextField(max_length=300, default='')
     product_category_id = models.ForeignKey("ProductCategory", on_delete=models.CASCADE)
-    user_id = models.ForeignKey("User", on_delete=models.CASCADE)
+    user_id = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
 
     def __str__(self):
         """
