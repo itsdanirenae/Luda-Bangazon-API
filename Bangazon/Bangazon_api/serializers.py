@@ -44,7 +44,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = Order
-        fields = ('id', 'url', 'active', 'payment_method_id', 'user_id',)
+        fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id',)
 
         
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
