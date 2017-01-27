@@ -12,10 +12,8 @@ from rest_framework import renderers
 
 class UserViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The User View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific User's url for the `update` and `destroy` actions.
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -24,10 +22,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class OrderViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The Order View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific Order's url for the `update` and `destroy` actions.
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
@@ -36,10 +32,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
 class PaymentMethodViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The Payment Method View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific Method's url for the `update` and `destroy` actions.
     """
     queryset = PaymentMethod.objects.all()
     serializer_class = PaymentMethodSerializer
@@ -47,10 +41,8 @@ class PaymentMethodViewSet(viewsets.ModelViewSet):
 
 class ProductCategoryViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The Product Category View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific Category's url for the `update` and `destroy` actions.
     """
     queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
@@ -59,10 +51,8 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
 class ProductOrderViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The Product/Order View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific item's url for the `update` and `destroy` actions.
     """
     queryset = ProductOrder.objects.all()
     serializer_class = ProductOrderSerializer
@@ -71,21 +61,8 @@ class ProductOrderViewSet(viewsets.ModelViewSet):
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list`, `create`, `retrieve`,
-    `update` and `destroy` actions.
-
-    Additionally we also provide an extra `highlight` action.
+    The Product View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific Product's url for the `update` and `destroy` actions.
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    # serializer = ProductSerializer(queryset, context={'request': request})
-
-
-
-
-# @api_view(['GET'])
-# def api_root(request, format=None):
-#     return Response({
-#         'users': reverse('UserViewSet', request=request, format=format),
-#         'products': reverse('ProductViewSet', request=request, format=format)
-#     })
