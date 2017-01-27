@@ -3,7 +3,8 @@ from Bangazon_api import views
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
 
-# Create a router and register our viewsets with it.
+# Create a router, using DefaultRouter
+# Register each ViewSet with it.
 router = DefaultRouter()
 router.register(r'products', views.ProductViewSet)
 router.register(r'users', views.UserViewSet)
