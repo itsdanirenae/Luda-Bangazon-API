@@ -17,6 +17,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     """
     The User View provides the `list`, `create`, and `retrieve` actions.
     Please click on a specific User's url for the `update` and `destroy` actions.
+    If user is not a staff, This will be the UserProfileView
     """
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
@@ -28,7 +29,11 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
 
 class UserStaffViewSet(viewsets.ModelViewSet):
-
+    """
+    The User View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific User's url for the `update` and `destroy` actions.
+    If user is_staff, This will be the UserProfileView
+    """
     queryset = UserProfile.objects.all()
     serializer_class = UserStaffSerializer
 

@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 
 
 class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
-
+    """
+    Class for data serialization of a specific Model: UserProfile
+    If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
+    """
 
 
     class Meta:
@@ -15,6 +18,11 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
       
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Class for data serialization of a specific Model: UserProfile
+    If user is not staff, This UserProfileSerializer will be picked up on the ViewSet
+    """
+
     
     class Meta:
         model = UserProfile
