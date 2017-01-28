@@ -37,11 +37,7 @@ class UserStaffViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserStaffSerializer
 
-    def get_serializer_class(self):
-        if self.request.user.is_staff:
-            return UserStaffSerializer
-        return UserProfileSerializer 
-            
+   
 
 
 class OrderViewSet(viewsets.ModelViewSet):
