@@ -8,6 +8,9 @@ from rest_framework.decorators import detail_route
 from rest_framework import viewsets
 from rest_framework import renderers 
 from rest_framework import permissions
+from django.contrib.auth.models import User
+
+
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
@@ -17,10 +20,24 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     """
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-    
-  
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return UserStaffSerializer
+        return UserProfileSerializer 
+
+
+class UserStaffViewSet(viewsets.ModelViewSet):
+
+    queryset = UserProfile.objects.all()
+    serializer_class = UserStaffSerializer
+
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return UserStaffSerializer
+        return UserProfileSerializer 
+            
+
 
 class OrderViewSet(viewsets.ModelViewSet):
     """
