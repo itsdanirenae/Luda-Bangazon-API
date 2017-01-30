@@ -6,7 +6,6 @@ from django.contrib import admin
 # Create a router, using DefaultRouter
 # Register each ViewSet with it.
 router = DefaultRouter()
-router.register(r'staff', views.UserStaffViewSet)
 router.register(r'products', views.ProductViewSet)
 router.register(r'users', views.UserProfileViewSet)
 router.register(r'orders', views.OrderViewSet)
