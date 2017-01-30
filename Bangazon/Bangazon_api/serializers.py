@@ -4,18 +4,7 @@ from django.contrib.auth import models
 from django.contrib.auth.models import User
 
 
-class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Class for data serialization of a specific Model: UserProfile
-    If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
-    """
 
-
-    class Meta:
-
-        model= UserProfile 
-        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth', 'created')
-      
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -60,15 +49,28 @@ class ProductOrderSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'product_id', 'order_id',)      
   
 
-class OrderSerializer(serializers.HyperlinkedModelSerializer):
+class OrderSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: Order
     """
+    product_orders = ProductOrderSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Order
-        fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id',)
+        fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id', 'product_orders')
 
-        
+class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Class for data serialization of a specific Model: UserProfile
+    If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
+    """
+    orders = OrderSerializer(many=True, read_only=True)
+
+    class Meta:
+
+        model= UserProfile 
+        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth', 'created', 'orders')
+      
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Payment Method
