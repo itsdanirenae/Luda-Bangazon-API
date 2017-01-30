@@ -13,19 +13,19 @@ from django.contrib.auth.models import User
 
 
 
-class UserProfileViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
     The User View provides the `list`, `create`, and `retrieve` actions.
     Please click on a specific User's url for the `update` and `destroy` actions.
-    If user is not a staff, This will be the UserProfileView
+    If user is not a staff, This will be the UserView
     """
-    queryset = UserProfile.objects.all()
-    serializer_class = UserProfileSerializer
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
     def get_serializer_class(self):
         if self.request.user.is_staff:
             return UserStaffSerializer
-        return UserProfileSerializer 
+        return UserSerializer 
    
 
 
@@ -36,6 +36,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
     
    
 

@@ -6,18 +6,6 @@ from django.contrib.auth.models import User
 
 
 
-class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Class for data serialization of a specific Model: UserProfile
-    If user is not staff, This UserProfileSerializer will be picked up on the ViewSet
-    """
-
-    
-    class Meta:
-        model = UserProfile
-        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth',)
-
-        extra_kwargs = {'date_of_birth': {'write_only': True}}
 
 
 
@@ -59,10 +47,25 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id', 'product_orders')
+        
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Class for data serialization of a specific Model: User
+    If user is not staff, This UserSerializer will be picked up on the ViewSet
+    """
+    orders = OrderSerializer(many=True, read_only=True)
+
+    
+    class Meta:
+        model = User
+        fields = ('id', 'url', 'first_name', 'last_name', 'username','orders','email',)
+
+        extra_kwargs = {'email': {'write_only': True}, 'username': {'write_only': True}}
 
 class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     """
-    Class for data serialization of a specific Model: UserProfile
+    Class for data serialization of a specific Model: User
     If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
     Added Orderserializer to make nested serializers in the UserStaffSerializer
     """
@@ -70,10 +73,11 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
 
-        model= UserProfile 
-        fields = ('id', 'url', 'first_name', 'last_name', 'date_of_birth', 'created', 'orders')
+        model= User 
+        fields = ('id', 'url', 'first_name', 'last_name', 'email', 'username', 'orders')
       
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
+    
     """
     Class for data serialization of a specific Model: Payment Method
     Sets user serializer to only show sensitive imformation to superusers

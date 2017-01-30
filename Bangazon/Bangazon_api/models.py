@@ -1,38 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class UserProfile(models.Model):
-    """
-    Class to create a table representing a User(customer) of Bangazon API
-    Extension of models.Model
-
-    Variables:
-        created: the current local date and time of creation
-        first_name: the user's first name
-        last_name: the user's last name
-        date_of_birth: the user's date of birth
-
-    Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin, Ben Marks
-    """
-    created = models.DateTimeField(auto_now_add=True)
-    first_name = models.CharField(max_length=50, default='')
-    last_name = models.CharField(max_length=50, default='')
-    date_of_birth = models.DateField(default = False)
-
-    def __str__(self):
-        """
-        Method to create a string representing a User(customer) of Bangazon
-        API
-
-        Returns a concatenated string representation of the first and last
-        name fields.
-        """
-        return self.first_name + ' ' + self.last_name
-
-    class Meta:
-        """
-        Class defining metadata for results of querying the User(customer)table of Bangazon API
-        """
-        ordering = ('last_name',)
 
 
 
@@ -54,7 +22,7 @@ class PaymentMethod(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=50, default='')
     account_number = models.CharField(max_length=100, blank=True, default='')
-    user_id = models.ForeignKey("UserProfile", related_name="payment_methods", on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, related_name="payment_methods", on_delete=models.CASCADE)
 
     def __str__(self):
         """
@@ -94,10 +62,10 @@ class Order(models.Model):
     """
     Class to represent an order on Bangazon
     """
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     payment_method_id = models.ForeignKey("PaymentMethod", related_name="orders", on_delete=models.CASCADE)
-    user_id = models.ForeignKey("UserProfile", related_name="orders", on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, related_name="orders", on_delete=models.CASCADE)
 
     def __str__(self):
         """
@@ -170,7 +138,7 @@ class Product(models.Model):
     quantity_available = models.IntegerField()
     description = models.TextField(max_length=300, default='')
     product_category_id = models.ForeignKey("ProductCategory", related_name="products", on_delete=models.CASCADE)
-    user_id = models.ForeignKey("UserProfile", related_name="products", on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, related_name="products", on_delete=models.CASCADE)
 
     def __str__(self):
         """
