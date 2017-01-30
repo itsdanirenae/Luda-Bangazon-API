@@ -26,17 +26,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         if self.request.user.is_staff:
             return UserStaffSerializer
         return UserProfileSerializer 
-
-
-class UserStaffViewSet(viewsets.ModelViewSet):
-    """
-    The User View provides the `list`, `create`, and `retrieve` actions.
-    Please click on a specific User's url for the `update` and `destroy` actions.
-    If user is_staff, This will be the UserProfileView
-    """
-    queryset = UserProfile.objects.all()
-    serializer_class = UserStaffSerializer
-
    
 
 
