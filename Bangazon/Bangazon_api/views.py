@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     If user is not a staff, This will be the UserView
     """
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    
 
     def get_serializer_class(self):
         if self.request.user.is_staff:
