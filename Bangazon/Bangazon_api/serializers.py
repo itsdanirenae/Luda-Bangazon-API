@@ -52,6 +52,7 @@ class ProductOrderSerializer(serializers.HyperlinkedModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: Order
+    Added ProductOorderSerializer to make nested serializers in the OrderSerializer
     """
     product_orders = ProductOrderSerializer(many=True, read_only=True)
     
@@ -63,6 +64,7 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: UserProfile
     If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
+    Added Orderserializer to make nested serializers in the UserStaffSerializer
     """
     orders = OrderSerializer(many=True, read_only=True)
 

@@ -46,7 +46,7 @@ class PaymentMethod(models.Model):
         created: the current local date and time of creation
         name: the payment method's name
         account_number: the payment method's unique identifier
-        user_id: the foreign key of the user
+        user_id: the foreign key of the user, related_name is for the PaymentMethod model: related_name should be lowercase, pluralized model name
 
     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
     Ben Marks
@@ -83,8 +83,10 @@ class Order(models.Model):
         active: A boolean denoting whether the order is being processed
         created: the current local date and time of creation
         payment_method_id: the foreign key of the user's payment method, only
-            needed when the order is "active"
-        user_id: the foreign key of the User(customer)
+            needed when the order is "active", related_name is for the Order model: related_name should be lowercase, pluralized model name
+
+        user_id: the foreign key of the User(customer)related_name is for the Order model: related_name should be lowercase, pluralized model name
+
 
     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
     Ben Marks
@@ -154,8 +156,10 @@ class Product(models.Model):
         price: the price of the product, in US dollars
         quantity_available: the amount available for purchase
         description: a description of the product
-        product_category_id: the foreign key of the product category
-        user_id: the foreign key of the User(seller)
+        product_category_id: the foreign key of the product category, related_name is for the Product model: related_name should be lowercase, pluralized model name
+
+        user_id: the foreign key of the User(seller), related_name is for the Product model: related_name should be lowercase, pluralized model name
+
 
     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
     Ben Marks
@@ -191,8 +195,10 @@ class ProductOrder(models.Model):
     Extension of models.Model
 
     Variables:
-        product_id: foreign key of an added product
-        order_id: foreign key of the order
+        product_id: foreign key of an added product, related_name is for the ProductOrder model: related_name should be lowercase, pluralized model name
+
+        order_id: foreign key of the order, related_name is for the ProductOrder model: related_name should be lowercase, pluralized model name
+
 
     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
     Ben Marks
