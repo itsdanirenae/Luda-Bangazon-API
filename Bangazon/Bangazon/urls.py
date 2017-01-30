@@ -7,7 +7,7 @@ from django.contrib import admin
 # Register each ViewSet with it.
 router = DefaultRouter()
 router.register(r'products', views.ProductViewSet)
-router.register(r'users', views.UserProfileViewSet)
+router.register(r'users', views.UserViewSet)
 router.register(r'orders', views.OrderViewSet)
 router.register(r'payment-method', views.PaymentMethodViewSet)
 router.register(r'product-categories', views.ProductCategoryViewSet)
