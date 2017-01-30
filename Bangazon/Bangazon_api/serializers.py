@@ -41,7 +41,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id', 'product_orders',)
-        depth = 1
+        depth = 0
       
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,7 +57,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'first_name', 'last_name', 'username','orders','email',)
 
         extra_kwargs = {'email': {'write_only': True}, 'username': {'write_only': True}}
-        depth = 1
+        depth = 0
 
 class ProductSerializer(serializers.ModelSerializer):
     """
@@ -66,7 +66,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'url', 'name', 'description', 'price', 'quantity_available', 'product_category_id', 'user_id',)
-        depth = 1
+        depth = 0
 
 class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -80,7 +80,7 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
 
         model= User 
         fields = ('id', 'url', 'first_name', 'last_name', 'email', 'username', 'orders')
-        depth = 1
+        depth = 0
       
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
     

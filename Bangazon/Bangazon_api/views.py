@@ -37,11 +37,6 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    # def get_serializer_class(self):
-    #     if self.request.user.is_staff:
-    #         return OrderStaffSerializer
-    #     return OrderSerializer 
-   
     
    
 
