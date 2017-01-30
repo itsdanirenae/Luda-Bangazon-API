@@ -8,19 +8,37 @@ from rest_framework.decorators import detail_route
 from rest_framework import viewsets
 from rest_framework import renderers 
 from rest_framework import permissions
+from django.contrib.auth.models import User
+
+
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     """
     The User View provides the `list`, `create`, and `retrieve` actions.
     Please click on a specific User's url for the `update` and `destroy` actions.
+    If user is not a staff, This will be the UserProfileView
     """
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-    
-  
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return UserStaffSerializer
+        return UserProfileSerializer 
+
+
+class UserStaffViewSet(viewsets.ModelViewSet):
+    """
+    The User View provides the `list`, `create`, and `retrieve` actions.
+    Please click on a specific User's url for the `update` and `destroy` actions.
+    If user is_staff, This will be the UserProfileView
+    """
+    queryset = UserProfile.objects.all()
+    serializer_class = UserStaffSerializer
+
+   
+
 
 class OrderViewSet(viewsets.ModelViewSet):
     """

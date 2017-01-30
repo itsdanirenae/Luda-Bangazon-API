@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=50, default='')
-    date_of_birth = models.DateField(default=True)
+    date_of_birth = models.DateField(default = False)
 
     def __str__(self):
         """
