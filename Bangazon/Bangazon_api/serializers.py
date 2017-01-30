@@ -9,15 +9,6 @@ from django.contrib.auth.models import User
 
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Class for data serialization of a specific Model: Product
-    """  
-
-    class Meta:
-        model = Product
-        fields = ('id', 'url', 'name', 'description', 'price', 'quantity_available', 'product_category_id', 'user_id',)
-
 
 class ProductCategorySerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -28,26 +19,30 @@ class ProductCategorySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'name',)
 
 
-class ProductOrderSerializer(serializers.HyperlinkedModelSerializer):
+class ProductOrderSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: ProductOrder
     """
     class Meta:
         model = ProductOrder
-        fields = ('id', 'url', 'product_id', 'order_id',)      
+        fields = ('id', 'url', 'product_id', 'order_id',)  
+        depth = 2    
   
+
 
 class OrderSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: Order
     Added ProductOorderSerializer to make nested serializers in the OrderSerializer
     """
+    # user_id = RandomUserSerializer(many=True, read_only=True)
     product_orders = ProductOrderSerializer(many=True, read_only=True)
     
     class Meta:
         model = Order
-        fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id', 'product_orders')
-        
+        fields = ('id', 'url','created', 'active', 'payment_method_id', 'user_id', 'product_orders',)
+        depth = 1
+      
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -62,6 +57,16 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'first_name', 'last_name', 'username','orders','email',)
 
         extra_kwargs = {'email': {'write_only': True}, 'username': {'write_only': True}}
+        depth = 1
+
+class ProductSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: Product
+    """  
+    class Meta:
+        model = Product
+        fields = ('id', 'url', 'name', 'description', 'price', 'quantity_available', 'product_category_id', 'user_id',)
+        depth = 1
 
 class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -69,12 +74,13 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     If user is_staff, This UserStaffSerializer will be picked up on the ViewSet
     Added Orderserializer to make nested serializers in the UserStaffSerializer
     """
-    orders = OrderSerializer(many=True, read_only=True)
+    # orders = OrderSerializer(many=True, read_only=True)
 
     class Meta:
 
         model= User 
         fields = ('id', 'url', 'first_name', 'last_name', 'email', 'username', 'orders')
+        depth = 1
       
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):
     
