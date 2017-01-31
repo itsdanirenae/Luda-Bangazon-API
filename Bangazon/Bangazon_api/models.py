@@ -188,7 +188,7 @@ class ProductOrder(models.Model):
         Method to create a string representing a ProductOrder sold by a
             particular User(seller) of Bangazon API
         """
-        return self.id
+        return str(self.id)
 
     class Meta:
         """
