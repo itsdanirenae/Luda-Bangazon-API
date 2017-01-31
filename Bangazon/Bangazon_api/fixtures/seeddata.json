@@ -32,8 +32,8 @@
   "model": "Bangazon_api.productorder",
   "pk": 1,
   "fields": {
-    "product_id": 1,
-    "order_id": 1
+    "product": 1,
+    "order": 1
   }
 }, {
   "model": "auth.permission",
@@ -374,7 +374,7 @@
     "created": "2017-01-30T19:06:09.745Z",
     "name": "visa",
     "account_number": "1234567898765432",
-    "user_id": 1
+    "customer": 1
   }
 }, {
   "model": "Bangazon_api.paymentmethod",
@@ -383,7 +383,7 @@
     "created": "2017-01-30T19:06:11.906Z",
     "name": "visa",
     "account_number": "1234567898765432",
-    "user_id": 1
+    "customer": 1
   }
 }, {
   "model": "Bangazon_api.order",
@@ -391,8 +391,8 @@
   "fields": {
     "active": false,
     "created": "2017-01-30T19:06:22.625Z",
-    "payment_method_id": 1,
-    "user_id": 1
+    "payment_method": 1,
+    "customer": 1
   }
 }, {
   "model": "Bangazon_api.order",
@@ -400,8 +400,8 @@
   "fields": {
     "active": false,
     "created": "2017-01-30T19:29:23.909Z",
-    "payment_method_id": 2,
-    "user_id": 3
+    "payment_method": 2,
+    "customer": 3
   }
 }, {
   "model": "Bangazon_api.product",
@@ -412,8 +412,8 @@
     "price": "5000.00",
     "quantity_available": 2,
     "description": "Greek Antique table",
-    "product_category_id": 1,
-    "user_id": 1
+    "product_category": 1,
+    "seller": 1
   }
 }, {
   "model": "Bangazon_api.product",
@@ -424,8 +424,8 @@
     "price": "120.00",
     "quantity_available": 15,
     "description": "The ultimate full series of Harry Potter",
-    "product_category_id": 2,
-    "user_id": 2
+    "product_category": 2,
+    "seller": 2
   }
 }, {
   "model": "Bangazon_api.product",
@@ -436,8 +436,8 @@
     "price": "28.00",
     "quantity_available": 18,
     "description": "1000 piece puzzle",
-    "product_category_id": 4,
-    "user_id": 1
+    "product_category": 4,
+    "seller": 1
   }
 }, {
   "model": "Bangazon_api.product",
@@ -448,8 +448,8 @@
     "price": "1200.00",
     "quantity_available": 4,
     "description": "1.6GHz dual-core Intel Core i5\r\nTurbo Boost up to 2.7GHz\r\n8GB Onboard Memory (Configurable to 16GB)\r\n1TB (5400-rpm) Hard Drive\r\nIntel HD Graphics 6000\r\n21.5\" LED-backlit IPS Display\r\n1920 x 1080 Resolution",
-    "product_category_id": 3,
-    "user_id": 4
+    "product_category": 3,
+    "seller": 4
   }
 }, {
   "model": "Bangazon_api.product",
@@ -460,7 +460,7 @@
     "price": "120.00",
     "quantity_available": 22,
     "description": "100% Synthetic\r\nMade in the USA or Imported\r\nHide weapons and other cargo in the secret compartment\r\nPretend to activate the hyperdrive and make a fast getaway\r\nRecreate fantastic scenes from Star Wars: The Force Awakens",
-    "product_category_id": 5,
-    "user_id": 2
+    "product_category": 5,
+    "seller": 2
   }
 }]
