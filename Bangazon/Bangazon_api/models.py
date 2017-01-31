@@ -183,6 +183,13 @@ class ProductOrder(models.Model):
     order = models.ForeignKey("Order", related_name="product_orders",
         on_delete=models.CASCADE)
 
+    def __str__(self):
+        """
+        Method to create a string representing a ProductOrder sold by a
+            particular User(seller) of Bangazon API
+        """
+        return self.id
+
     class Meta:
         """
         Class defining metadata for results of querying the Product/Order
