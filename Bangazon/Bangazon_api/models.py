@@ -42,48 +42,6 @@ class PaymentMethod(models.Model):
         ordering = ('name',)
 
 
-class Order(models.Model):
-    """
-    Class to create a table representing an Order, tied to a
-        particular User(customer) of Bangazon API
-    Extension of models.Model
-
-    Variables:
-        active: A boolean denoting whether the order is being processed
-        created: the current local date and time of creation
-        payment_method: the foreign key of the user's payment method, only
-            needed when the order is "active", related_name is for the Order
-            model; related_name should be lowercase, pluralized model name
-
-        customer: the foreign key of the User(customer)related_name is for
-        the Order model; related_name should be lowercase, pluralized model
-        name
-
-    Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
-        Ben Marks
-    """
-    active = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    payment_method = models.ForeignKey("PaymentMethod",
-        related_name="orders", on_delete=models.CASCADE)
-    customer = models.ForeignKey(User, related_name="orders",
-        on_delete=models.CASCADE)
-
-    def __str__(self):
-        """
-        Method to create a string representing a Order of a particular User
-            (customer) of Bangazon API
-        """
-        return str(self.id)
-
-    class Meta:
-        """
-        Class defining metadata for results of querying the Order table of
-            Bangazon API
-        """
-        ordering = ('customer',)
-
-
 class ProductCategory(models.Model):
     """
     Class to create a table representing a Product Category of Bangazon API
@@ -144,6 +102,8 @@ class Product(models.Model):
         related_name="products", on_delete=models.CASCADE)
     seller = models.ForeignKey(User, related_name="products",
         on_delete=models.CASCADE)
+    # orders = models.ManyToManyField(Order, on_delete=models.CASCADE)
+
 
     def __str__(self):
         """
@@ -160,39 +120,82 @@ class Product(models.Model):
         ordering = ('name',)
 
 
-class ProductOrder(models.Model):
+class Order(models.Model):
     """
-    Class to create a table representing a Product Order, tying products to a
-        particular Order
+    Class to create a table representing an Order, tied to a
+        particular User(customer) of Bangazon API
     Extension of models.Model
 
     Variables:
-        product: foreign key of an added product, related_name is for the
-            ProductOrder model; related_name should be lowercase, pluralized
-            model name
+        active: A boolean denoting whether the order is being processed
+        created: the current local date and time of creation
+        payment_method: the foreign key of the user's payment method, only
+            needed when the order is "active", related_name is for the Order
+            model; related_name should be lowercase, pluralized model name
 
-        order: foreign key of the order, related_name is for the
-            ProductOrder model; related_name should be lowercase, pluralized
-            model name
+        customer: the foreign key of the User(customer)related_name is for
+        the Order model; related_name should be lowercase, pluralized model
+        name
 
     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
-    Ben Marks
+        Ben Marks
     """
-    product = models.ForeignKey("Product", related_name="product_orders",
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    payment_method = models.ForeignKey("PaymentMethod",
+        related_name="orders", on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, related_name="orders",
         on_delete=models.CASCADE)
-    order = models.ForeignKey("Order", related_name="product_orders",
-        on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product)
 
     def __str__(self):
         """
-        Method to create a string representing a ProductOrder sold by a
-            particular User(seller) of Bangazon API
+        Method to create a string representing a Order of a particular User
+            (customer) of Bangazon API
         """
         return str(self.id)
 
     class Meta:
         """
-        Class defining metadata for results of querying the Product/Order
-            table of Bangazon API
+        Class defining metadata for results of querying the Order table of
+            Bangazon API
         """
-        ordering = ('order',)
+        ordering = ('customer',)
+
+
+# class ProductOrder(models.Model):
+#     """
+#     Class to create a table representing a Product Order, tying products to a
+#         particular Order
+#     Extension of models.Model
+
+#     Variables:
+#         product: foreign key of an added product, related_name is for the
+#             ProductOrder model; related_name should be lowercase, pluralized
+#             model name
+
+#         order: foreign key of the order, related_name is for the
+#             ProductOrder model; related_name should be lowercase, pluralized
+#             model name
+
+#     Authors: Julia Kim-Chung, Jack Pinkston, Sam Phillips, Drew Martin,
+#     Ben Marks
+#     """
+#     product = models.ForeignKey("Product", related_name="product_orders",
+#         on_delete=models.CASCADE)
+#     order = models.ForeignKey("Order", related_name="product_orders",
+#         on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         """
+#         Method to create a string representing a ProductOrder sold by a
+#             particular User(seller) of Bangazon API
+#         """
+#         return str(self.id)
+
+#     class Meta:
+#         """
+#         Class defining metadata for results of querying the Product/Order
+#             table of Bangazon API
+#         """
+#         ordering = ('order',)

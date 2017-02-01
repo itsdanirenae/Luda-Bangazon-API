@@ -11,7 +11,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'orders', views.OrderViewSet)
 router.register(r'payment-method', views.PaymentMethodViewSet)
 router.register(r'product-categories', views.ProductCategoryViewSet)
-router.register(r'product-orders', views.ProductOrderViewSet)
+# router.register(r'product-orders', views.ProductOrderViewSet)
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browsable API.

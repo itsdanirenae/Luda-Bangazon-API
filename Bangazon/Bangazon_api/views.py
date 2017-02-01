@@ -59,13 +59,13 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 
 
 
-class ProductOrderViewSet(viewsets.ModelViewSet):
-    """
-    The Product/Order View provides the `list`, `create`, and `retrieve` actions.
-    Please click on a specific item's url for the `update` and `destroy` actions.
-    """
-    queryset = ProductOrder.objects.all()
-    serializer_class = ProductOrderSerializer
+# class ProductOrderViewSet(viewsets.ModelViewSet):
+#     """
+#     The Product/Order View provides the `list`, `create`, and `retrieve` actions.
+#     Please click on a specific item's url for the `update` and `destroy` actions.
+#     """
+#     queryset = ProductOrder.objects.all()
+#     serializer_class = ProductOrderSerializer
 
   
 

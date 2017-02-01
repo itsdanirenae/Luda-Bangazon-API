@@ -14,15 +14,15 @@ class ProductCategorySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'name',)
 
 
-class ProductOrderSerializer(serializers.ModelSerializer):
-    """
-    Class for data serialization of a specific Model: ProductOrder
-    """
+# class ProductOrderSerializer(serializers.ModelSerializer):
+#     """
+#     Class for data serialization of a specific Model: ProductOrder
+#     """
 
-    class Meta:
-        model = ProductOrder
-        fields = ('id', 'url', 'product', 'order',)
-        depth = 2
+#     class Meta:
+#         model = ProductOrder
+#         fields = ('id', 'url', 'product', 'order',)
+#         depth = 2
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -31,13 +31,13 @@ class OrderSerializer(serializers.ModelSerializer):
     Added ProductOorderSerializer to make nested serializers in the
         OrderSerializer
     """
-    product_orders = ProductOrderSerializer(many=True, read_only=True)
+    # product_orders = ProductOrderSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
         fields = ('id', 'url','created', 'active', 'payment_method',
-            'customer', 'product_orders',)
-        depth = 0
+            'customer', 'products',)
+        # depth = 0
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -54,7 +54,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             'orders', 'email',)
         extra_kwargs = {'email': {'write_only': True},
             'username': {'write_only': True}}
-        depth = 0
+        # depth = 0
 
 
 class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
@@ -70,7 +70,7 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
         model = User 
         fields = ('id', 'url', 'first_name', 'last_name', 'email',
             'username', 'orders')
-        depth = 0
+        # depth = 0
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -81,8 +81,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'url', 'name', 'description', 'price',
-            'quantity_available', 'product_category', 'seller',)
-        depth = 0
+            'quantity_available', 'product_category', 'seller', 'orders')
+        # depth = 0
 
 
 class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):    
