@@ -4,24 +4,24 @@ from django.contrib.auth import models
 from django.contrib.auth.models import User
 
 
-class ProductCategorySerializer(serializers.HyperlinkedModelSerializer):
+class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: ProductCategory
     """
 
     class Meta:
-        model = ProductCategory
-        fields = ('id', 'url', 'name',)
+        model = ProductType
+        fields = '__all__'
 
 
-class ProductOrderSerializer(serializers.ModelSerializer):
+class OrderProductSerializer(serializers.ModelSerializer):
     """
     Class for data serialization of a specific Model: ProductOrder
     """
 
     class Meta:
-        model = ProductOrder
-        fields = ('id', 'url', 'product', 'order',)
+        model = OrderProduct
+        fields = '__all__'
         depth = 2
 
 
@@ -31,47 +31,51 @@ class OrderSerializer(serializers.ModelSerializer):
     Added ProductOorderSerializer to make nested serializers in the
         OrderSerializer
     """
-    product_orders = ProductOrderSerializer(many=True, read_only=True)
+    product_orders = OrderProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
-        fields = ('id', 'url','created', 'active', 'payment_method',
-            'customer', 'product_orders',)
+        fields = '__all__'
         depth = 0
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Class for data serialization of a specific Model: User
-    If user is not staff, This UserSerializer will be picked up on the
-        ViewSet
-    """
-    orders = OrderSerializer(many=True, read_only=True)
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     """
+#     Class for data serialization of a specific Model: User
+#     If user is not staff, This UserSerializer will be picked up on the
+#         ViewSet
+#     """
+#     orders = OrderSerializer(many=True, read_only=True)
 
+#     class Meta:
+#         model = User
+#         fields = '__all__'
+#         extra_kwargs = {'email': {'write_only': True},
+#             'username': {'write_only': True}}
+#         depth = 0
+
+
+# class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
+#     """
+#     Class for data serialization of a specific Model: User
+#     If user is_staff, This UserStaffSerializer will be picked up on
+#         the ViewSet
+#     Added Orderserializer to make nested serializers in the
+#         UserStaffSerializer
+#     """
+
+#     class Meta:
+#         model = User 
+#         fields = '__all__'
+#         depth = 0
+
+class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    """
     class Meta:
-        model = User
-        fields = ('id', 'url', 'first_name', 'last_name', 'username',
-            'orders', 'email',)
-        extra_kwargs = {'email': {'write_only': True},
-            'username': {'write_only': True}}
+        model = Customer
+        fields = '__all__'
         depth = 0
-
-
-class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Class for data serialization of a specific Model: User
-    If user is_staff, This UserStaffSerializer will be picked up on
-        the ViewSet
-    Added Orderserializer to make nested serializers in the
-        UserStaffSerializer
-    """
-
-    class Meta:
-        model = User 
-        fields = ('id', 'url', 'first_name', 'last_name', 'email',
-            'username', 'orders')
-        depth = 0
-
 
 class ProductSerializer(serializers.ModelSerializer):
     """
@@ -80,17 +84,16 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'url', 'name', 'description', 'price',
-            'quantity_available', 'product_category', 'seller',)
+        fields = '__all__'
         depth = 0
 
 
-class PaymentMethodSerializer(serializers.HyperlinkedModelSerializer):    
+class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):    
     """
     Class for data serialization of a specific Model: Payment Method
     Sets user serializer to only show sensitive imformation to superusers
     """
 
     class Meta:
-        model = PaymentMethod
-        fields = ('id', 'url', 'name', 'account_number', 'customer',)
+        model = PaymentType
+        fields = '__all__'
