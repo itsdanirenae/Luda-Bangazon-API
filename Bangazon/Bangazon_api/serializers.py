@@ -39,35 +39,35 @@ class OrderSerializer(serializers.ModelSerializer):
         depth = 0
 
 
-# class UserSerializer(serializers.HyperlinkedModelSerializer):
-#     """
-#     Class for data serialization of a specific Model: User
-#     If user is not staff, This UserSerializer will be picked up on the
-#         ViewSet
-#     """
-#     orders = OrderSerializer(many=True, read_only=True)
+class UserSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: User
+    If user is not staff, This UserSerializer will be picked up on the
+        ViewSet
+    """
+    orders = OrderSerializer(many=True, read_only=True)
 
-#     class Meta:
-#         model = User
-#         fields = '__all__'
-#         extra_kwargs = {'email': {'write_only': True},
-#             'username': {'write_only': True}}
-#         depth = 0
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email',)
+        # extra_kwargs = {'email': {'write_only': True},
+        #     'username': {'write_only': True}}
+        depth = 0
 
 
-# class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
-#     """
-#     Class for data serialization of a specific Model: User
-#     If user is_staff, This UserStaffSerializer will be picked up on
-#         the ViewSet
-#     Added Orderserializer to make nested serializers in the
-#         UserStaffSerializer
-#     """
+class UserStaffSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: User
+    If user is_staff, This UserStaffSerializer will be picked up on
+        the ViewSet
+    Added Orderserializer to make nested serializers in the
+        UserStaffSerializer
+    """
 
-#     class Meta:
-#         model = User 
-#         fields = '__all__'
-#         depth = 0
+    class Meta:
+        model = User 
+        fields = '__all__'
+        depth = 0
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -75,7 +75,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
-        depth = 0
+        depth = 1
 
 class ProductSerializer(serializers.ModelSerializer):
     """
