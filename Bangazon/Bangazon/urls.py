@@ -7,11 +7,12 @@ from django.contrib import admin
 # Register each ViewSet with it.
 router = DefaultRouter()
 router.register(r'products', views.ProductViewSet)
-router.register(r'users', views.UserViewSet)
+router.register(r'customers', views.CustomerViewSet)
 router.register(r'orders', views.OrderViewSet)
-router.register(r'payment-method', views.PaymentMethodViewSet)
-router.register(r'product-categories', views.ProductCategoryViewSet)
-router.register(r'product-orders', views.ProductOrderViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'payment-method', views.PaymentTypeViewSet)
+router.register(r'product-categories', views.ProductTypeViewSet)
+router.register(r'product-orders', views.OrderProductViewSet)
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browsable API.
