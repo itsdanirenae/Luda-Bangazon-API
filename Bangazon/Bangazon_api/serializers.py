@@ -31,12 +31,12 @@ class OrderSerializer(serializers.ModelSerializer):
     Added ProductOorderSerializer to make nested serializers in the
         OrderSerializer
     """
-    # product_orders = OrderProductSerializer(many=True, read_only=True)
+    product_orders = OrderProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
         fields = '__all__'
-        depth = 1
+        depth = 0
 
 
 class UserSerializer(serializers.ModelSerializer):
