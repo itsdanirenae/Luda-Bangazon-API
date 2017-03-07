@@ -31,12 +31,12 @@ class OrderSerializer(serializers.ModelSerializer):
     Added ProductOorderSerializer to make nested serializers in the
         OrderSerializer
     """
-    product_orders = OrderProductSerializer(many=True, read_only=True)
+    # product_orders = OrderProductSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
         fields = '__all__'
-        depth = 0
+        depth = 1
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -45,13 +45,12 @@ class UserSerializer(serializers.ModelSerializer):
     If user is not staff, This UserSerializer will be picked up on the
         ViewSet
     """
-    orders = OrderSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email',)
-        # extra_kwargs = {'email': {'write_only': True},
-        #     'username': {'write_only': True}}
+        extra_kwargs = {'email': {'write_only': True},
+            'username': {'write_only': True}}
         depth = 0
 
 
@@ -72,6 +71,8 @@ class UserStaffSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     """
+    orders = OrderSerializer(many=True, read_only=True)
+    user = UserSerializer(read_only=True)
     class Meta:
         model = Customer
         fields = '__all__'
