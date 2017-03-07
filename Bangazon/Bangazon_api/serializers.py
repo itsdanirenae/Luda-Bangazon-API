@@ -1,6 +1,10 @@
 from rest_framework import serializers
-from Bangazon_api.models import *
-from django.contrib.auth import models
+from .models.product import Product
+from .models.order import Order
+from .models.order import OrderProduct
+from .models.payment_type import PaymentType
+from .models.product_type import ProductType
+from .models.customer import Customer
 from django.contrib.auth.models import User
 
 
@@ -49,8 +53,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email',)
-        extra_kwargs = {'email': {'write_only': True},
-            'username': {'write_only': True}}
+        extra_kwargs = {'email': {'write_only': True}, 'username': {'write_only': True}}
         depth = 0
 
 
@@ -68,15 +71,18 @@ class UserStaffSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 0
 
+
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     """
     orders = OrderSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)
+
     class Meta:
         model = Customer
         fields = '__all__'
         depth = 1
+
 
 class ProductSerializer(serializers.ModelSerializer):
     """

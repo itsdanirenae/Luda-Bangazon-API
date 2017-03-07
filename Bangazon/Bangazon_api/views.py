@@ -1,15 +1,12 @@
-from Bangazon_api.models import *
-from Bangazon_api.serializers import *
-from rest_framework import generics
-from rest_framework.reverse import reverse
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.decorators import detail_route
+from .models.product import Product
+from .models.order import Order
+from .models.order import OrderProduct
+from .models.payment_type import PaymentType
+from .models.product_type import ProductType
+from .models.customer import Customer
+from .serializers import *
 from rest_framework import viewsets
-from rest_framework import renderers 
-from rest_framework import permissions
 from django.contrib.auth.models import User
-
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,6 +14,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class CustomerViewSet(viewsets.ModelViewSet):
     """
@@ -36,8 +34,6 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    
-   
 
 class PaymentTypeViewSet(viewsets.ModelViewSet):
     """
@@ -57,7 +53,6 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
     serializer_class = ProductTypeSerializer
 
 
-
 class OrderProductViewSet(viewsets.ModelViewSet):
     """
     The Product/Order View provides the `list`, `create`, and `retrieve` actions.
@@ -66,7 +61,6 @@ class OrderProductViewSet(viewsets.ModelViewSet):
     queryset = OrderProduct.objects.all()
     serializer_class = OrderProductSerializer
 
-  
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
@@ -75,5 +69,3 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
-
