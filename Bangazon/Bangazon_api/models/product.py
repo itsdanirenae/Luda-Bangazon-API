@@ -29,7 +29,7 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, default='')
     price = models.DecimalField(max_digits=20, decimal_places=2)
-    quantity_available = models.IntegerField()
+    quantity = models.IntegerField()
     description = models.TextField(max_length=300, default='')
     product_type = models.ForeignKey(ProductType, related_name="products",
                                      on_delete=models.CASCADE, blank=True, null=True)

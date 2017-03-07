@@ -98,7 +98,7 @@
 		"description": "dfjghlksjh",
 		"quantity": 8,
 		"product_type": 4,
-		"customer": 4
+		"customer": 2
 	}
 }, {
 	"model": "Bangazon_api.product",
@@ -110,7 +110,7 @@
 		"description": "A swanky Hotel",
 		"quantity": 3,
 		"product_type": 5,
-		"customer": 5
+		"customer": 2
 	}
 }, {
 	"model": "Bangazon_api.product",
@@ -158,7 +158,7 @@
 	"model": "Bangazon_api.paymenttype",
 	"pk": 4,
 	"fields": {
-		"customer": 3,
+		"customer": 2,
 		"payment_type": "Discover",
 		"account_number": "039450398475098",
 		"ccv": "987",
@@ -168,7 +168,7 @@
 	"model": "Bangazon_api.paymenttype",
 	"pk": 5,
 	"fields": {
-		"customer": 3,
+		"customer": 2,
 		"payment_type": "mastercard",
 		"account_number": "8347509238475",
 		"ccv": "987",
@@ -178,7 +178,7 @@
 	"model": "Bangazon_api.paymenttype",
 	"pk": 6,
 	"fields": {
-		"customer": 5,
+		"customer": 1,
 		"payment_type": "Discover",
 		"account_number": "39408753248907",
 		"ccv": "876",
@@ -188,7 +188,7 @@
 	"model": "Bangazon_api.paymenttype",
 	"pk": 7,
 	"fields": {
-		"customer": 5,
+		"customer": 2,
 		"payment_type": "visa",
 		"account_number": "30475032987",
 		"ccv": "987",
@@ -262,7 +262,7 @@
 	"model": "Bangazon_api.order",
 	"pk": 9,
 	"fields": {
-		"customer": 3,
+		"customer": 2,
 		"completed": 1,
 		"payment_type": null
 	}
@@ -270,7 +270,7 @@
 	"model": "Bangazon_api.order",
 	"pk": 10,
 	"fields": {
-		"customer": 3,
+		"customer": 2,
 		"completed": 1,
 		"payment_type": null
 	}
@@ -278,7 +278,7 @@
 	"model": "Bangazon_api.order",
 	"pk": 11,
 	"fields": {
-		"customer": 3,
+		"customer": 1,
 		"completed": 0,
 		"payment_type": null
 	}
@@ -286,7 +286,7 @@
 	"model": "Bangazon_api.order",
 	"pk": 12,
 	"fields": {
-		"customer": 4,
+		"customer": 2,
 		"completed": 0,
 		"payment_type": null
 	}
@@ -294,25 +294,25 @@
 	"model": "Bangazon_api.order",
 	"pk": 13,
 	"fields": {
-		"customer": 5,
+		"customer": 1,
 		"completed": 1,
-		"payment_type": null
+		"payment_type": 1
 	}
 }, {
 	"model": "Bangazon_api.order",
 	"pk": 14,
 	"fields": {
-		"customer": 5,
-		"completed": 0,
-		"payment_type": null
+		"customer": 1,
+		"completed": 1,
+		"payment_type": 1
 	}
 }, {
 	"model": "Bangazon_api.order",
 	"pk": 15,
 	"fields": {
-		"customer": 6,
-		"completed": 0,
-		"payment_type": null
+		"customer": 1,
+		"completed": 1,
+		"payment_type": 1
 	}
 }, {
 	"model": "Bangazon_api.order",
@@ -327,31 +327,24 @@
 	"pk": 17,
 	"fields": {
 		"customer": 1,
-		"completed": 0,
+		"completed": 1,
 		"payment_type": null
 	}
 }, {
 	"model": "Bangazon_api.order",
 	"pk": 18,
 	"fields": {
-		"customer": 7,
-		"completed": 0,
+		"customer": 1,
+		"completed": 1,
 		"payment_type": null
 	}
 }, {
 	"model": "Bangazon_api.order",
 	"pk": 19,
 	"fields": {
-		"customer": 8,
-		"completed": 0,
+		"customer": 1,
+		"completed": 1,
 		"payment_type": null
-	}
-}, {
-	"model": "Bangazon_api.orderproduct",
-	"pk": 1,
-	"fields": {
-		"product": null,
-		"order": null
 	}
 }, {
 	"model": "Bangazon_api.orderproduct",

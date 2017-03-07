@@ -21,7 +21,6 @@ class PaymentType(models.Model):
     """
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     payment_type = models.CharField(max_length=50, default='')
-    created = models.DateTimeField(auto_now_add=True)
     account_number = models.CharField(max_length=16, unique=True, default='')
     ccv = models.CharField(max_length=3)
     expiration_date = models.CharField(max_length=10)

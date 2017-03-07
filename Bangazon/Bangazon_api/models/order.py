@@ -63,7 +63,7 @@ class OrderProduct(models.Model):
     Ben Marks
     """
     product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, mull=True, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         """
